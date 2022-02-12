@@ -1,0 +1,114 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x842: file p5final.c, line 24.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5final.c:24
+24    x=input();
+(gdb) s
+input () at p5final.c:3
+3   {
+(gdb) n
+5     printf("Enter a positive number:\n");
+(gdb) n
+Enter a positive number:
+6     scanf("%d",&n);
+(gdb) n
+5
+7     return n;
+(gdb) n
+8   }
+(gdb) p n
+$1 = 5
+(gdb) n
+main () at p5final.c:25
+25    y=input();
+(gdb) s
+input () at p5final.c:3
+3   {
+(gdb) n
+5     printf("Enter a positive number:\n");
+(gdb) n
+Enter a positive number:
+6     scanf("%d",&n);
+(gdb) n
+10
+7     return n;
+(gdb) n
+8   }
+(gdb) p n
+$2 = 10
+(gdb) n
+main () at p5final.c:26
+26    z=gcd(x,y);
+(gdb) s
+gcd (a=5, b=10) at p5final.c:12
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+14        gcd=i;
+(gdb) n
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) p gcd
+$3 = 1
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+14        gcd=i;
+(gdb) n
+12    for(i=1; i<=a && i<=b; ++i)
+(gdb) p gcd
+$4 = 5
+(gdb) n
+15    return gcd;
+(gdb) n
+16  }
+(gdb) p gcd
+$5 = 5
+(gdb) n
+main () at p5final.c:27
+27    output(x,y,z);
+(gdb) s
+output (a=5, b=10, gcd=5) at p5final.c:19
+19    printf("GCD of %d and %d is %d",a,b,gcd);
+(gdb) n
+20  }
+(gdb) n
+main () at p5final.c:28
+28    return 0;
+(gdb) n
+29  }
+(gdb) c
+Continuing.
+GCD of 5 and 10 is 5[Inferior 1 (process 267) exited normally]
+(gdb) q
