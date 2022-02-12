@@ -1,0 +1,71 @@
+gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x86b: file p7final.c, line 22.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7final.c:22
+22  {
+(gdb) n
+24    t=input_triangle();
+(gdb) s
+input_triangle () at p7final.c:7
+7   {
+(gdb) n
+9     printf("Enter the base and altitude of the triangle:\n");
+(gdb) n
+Enter the base and altitude of the triangle:
+10    scanf("%f%f",&t1.base,&t1.altitude);
+(gdb) n
+2
+3
+11    return t1;
+(gdb) p t1.base
+$1 = 2
+(gdb) p t1.altitude
+$2 = 3
+(gdb) n
+12  }
+(gdb) n
+main () at p7final.c:25
+25    find_area(&t);
+(gdb) s
+find_area (t=0x7ffd4b6af3fc) at p7final.c:15
+15    t->area=(t->base*t->altitude)/2.0;
+(gdb) n
+16  }
+(gdb) p t->area
+$3 = 3
+(gdb) n
+main () at p7final.c:26
+26    output(t);
+(gdb) s
+output (t=...) at p7final.c:19
+19    printf("The area of the triangle with base: %f and altitude: %f is %f.",t.base,t.altitude,t.area);
+(gdb) n
+20  }
+(gdb) n
+main () at p7final.c:27
+27    return 0;
+(gdb) n
+28  }
+(gdb) c
+Continuing.
+The area of the triangle with base: 2.000000 and altitude: 3.000000 is 3.000000.[Inferior 1 (process 311) exited normally]
+(gdb) q
